@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: prashantsingh34/portfolio-demo
+  repository: us-central1-docker.pkg.dev/elite-totality-418717/react-portfolio/portfolio-image
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "cart"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
