@@ -8,7 +8,7 @@ image:
   repository: us-central1-docker.pkg.dev/elite-totality-418717/react-portfolio/portfolio-image
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.14"
+  tag: "0.0.15"
 
 imagePullSecrets: []
 nameOverride: ""
