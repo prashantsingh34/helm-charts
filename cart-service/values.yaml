@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: us-central1-docker.pkg.dev/elite-totality-418717/shopping-cart/shopping-cart-image
+  repository: prashantsingh34/portfolio-demo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.21"
+  tag: "cart"
 
 imagePullSecrets: []
 nameOverride: ""
