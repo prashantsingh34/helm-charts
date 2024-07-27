@@ -16,7 +16,7 @@ metadata:
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: {{ .Values.image.repository }}
+    name: {{ include "weather.fullname" . }}
   policy:
     semver:
       range: '>=0.0.1'
