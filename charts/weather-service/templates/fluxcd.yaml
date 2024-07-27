@@ -4,7 +4,7 @@ metadata:
   name: {{ include "weather.fullname" . }}
   namespace: flux-system
 spec:
-  image: {{ .Values.service.image.registry }}/{{ .Values.image.repository }}
+  image: {{ .Values.image.repository }}
   interval: 1m
   secretRef:
     name: docker-hub-cred
