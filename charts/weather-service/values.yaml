@@ -56,7 +56,7 @@ ingress:
         - path: /weather
           pathType: ImplementationSpecific
   tls:
-   - secretName: letsencrypt-nginx
+   - secretName: letsencrypt-nginx-btqlb
      hosts:
        - project.prashantsingh.online
 
