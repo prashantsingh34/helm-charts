@@ -1,23 +1,23 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
-  name: {{ include "weather.fullname" . }}
+  name: {{ include "social-media-api.fullname" . }}
   namespace: flux-system
 spec:
   image: {{ .Values.image.repository }}
   interval: 1m
-  # provider: gcp
-  secretRef:
-    name: docker-hub-cred
+  provider: gcp
+  # secretRef:
+  #   name: docker-hub-cred
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
-  name: {{ include "weather.fullname" . }}
+  name: {{ include "social-media-api.fullname" . }}
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: {{ include "weather.fullname" . }}
+  name: {{ include "social-media-api.fullname" . }}
   policy:
     semver:
       range: '>=0.0.1'

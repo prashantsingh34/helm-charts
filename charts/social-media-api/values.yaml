@@ -1,19 +1,19 @@
-# Default values for weather.
+# Default values for social-media-api.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-namespace: weather-service
+
 image:
-  repository: prashantsingh34/weather-service
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
 
-imagePullSecrets:
-  - name: docker-hub-cred
+imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
+namespace: social-media-api
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -40,8 +40,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: NodePort
-  port: 80
+  type: ClusterIP
+  port: 8800
 
 ingress:
   enabled: true
@@ -53,7 +53,7 @@ ingress:
   hosts:
     - host: project.prashantsingh.online
       paths:
-        - path: /weather
+        - path: /
           pathType: ImplementationSpecific
   tls:
    - secretName: letsencrypt-nginx
@@ -71,6 +71,16 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
 autoscaling:
   enabled: false
   minReplicas: 1
