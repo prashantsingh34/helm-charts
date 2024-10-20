@@ -42,22 +42,22 @@ spec:
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:
-            - name:
+            - name: DB_HOST
               valueFrom:
                 secretKeyRef:
                   name: social-media-api-secrets
                   key: DB_HOST
-            - name:
+            - name: DB_USER
               valueFrom:
                 secretKeyRef:
                   name: social-media-api-secrets
                   key: DB_USER
-            - name:
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: social-media-api-secrets
                   key: DB_PASSWORD
-            - name:
+            - name: DB_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: social-media-api-secrets
