@@ -77,7 +77,7 @@ spec:
           args: 
            - "--structured-logs"
            - "--port=3306"
-           -  "PROJDECT_ID:REGION:SQL_INSTANCE_NAME" 
+           -  "elite-totality-418717:asia-south1:cloud-sql" 
           securityContext:
             runAsNonRoot: true 
       {{- with .Values.volumes }}
