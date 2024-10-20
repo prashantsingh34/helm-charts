@@ -6,7 +6,7 @@ metadata:
 spec:
   image: {{ .Values.image.repository }}
   interval: 1m
-  provider: gcp
+  # provider: gcp
   secretRef:
     name: docker-hub-cred
 ---
