@@ -77,12 +77,20 @@ spec:
           args: 
            - "--structured-logs"
            - "--port=3306"
-           -  "elite-totality-418717:asia-south1:cloud-sql" 
+           -  "elite-totality-418717:asia-south1:cloud-sql"
+           -  "-credential_file=/secrets/cloudsql/credentials.json"
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
           securityContext:
             runAsNonRoot: true 
       {{- with .Values.volumes }}
       volumes:
-        {{- toYaml . | nindent 8 }}
+      - name: cloudsql-instance-credentials
+        secret:
+          secretName: cloudsql-instance-credentials
+      # volumes:
+      #   {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
