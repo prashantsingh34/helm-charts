@@ -41,6 +41,12 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
+          env:
+            - name: REACT_APP_API_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: social-media-client-secrets
+                  key: REACT_APP_API_ENDPOINT
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
