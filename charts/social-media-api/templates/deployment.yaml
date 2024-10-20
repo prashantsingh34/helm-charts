@@ -84,7 +84,7 @@ spec:
               mountPath: /secrets/cloudsql
           securityContext:
             runAsNonRoot: true 
-      {{- with .Values.volumes }}
+      # {{- with .Values.volumes }}
       volumes:
       - name: cloudsql-instance-credentials
         secret:
