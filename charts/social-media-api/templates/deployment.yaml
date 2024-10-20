@@ -62,14 +62,6 @@ spec:
                 secretKeyRef:
                   name: social-media-api-secrets
                   key: DB_DATABASE
-        - name: cloudsql-proxy
-          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.8.0
-          args: 
-           - "--structured-logs"
-           - "--port=3306"
-           -  "PROJDECT_ID:REGION:SQL_INSTANCE_NAME" 
-          securityContext:
-            runAsNonRoot: true 
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
@@ -80,6 +72,14 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+        - name: cloudsql-proxy
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.8.0
+          args: 
+           - "--structured-logs"
+           - "--port=3306"
+           -  "PROJDECT_ID:REGION:SQL_INSTANCE_NAME" 
+          securityContext:
+            runAsNonRoot: true 
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
