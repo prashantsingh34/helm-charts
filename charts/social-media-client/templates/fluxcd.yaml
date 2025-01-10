@@ -17,7 +17,7 @@ metadata:
   namespace: flux-system
 spec:
   imageRepositoryRef:
-  name: {{ include "social-media-client.fullname" . }}
+    name: {{ include "social-media-client.fullname" . }}
   policy:
     semver:
       range: '>=0.0.1'
