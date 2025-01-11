@@ -78,8 +78,6 @@ spec:
           volumeMounts:
             - name: cloudsql-instance-credentials
               mountPath: /secrets/cloudsql
-          securityContext:
-            runAsNonRoot: true 
       volumes:
       - name: cloudsql-instance-credentials
         secret:
