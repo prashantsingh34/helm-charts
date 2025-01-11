@@ -68,10 +68,6 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
-          volumeMounts:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
         - name: cloudsql-proxy
           image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.8.0
           args: 
@@ -84,14 +80,10 @@ spec:
               mountPath: /secrets/cloudsql
           securityContext:
             runAsNonRoot: true 
-      # {{- with .Values.volumes }}
       volumes:
       - name: cloudsql-instance-credentials
         secret:
           secretName: cloudsql-instance-credentials
-      # volumes:
-      #   {{- toYaml . | nindent 8 }}
-      # {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
