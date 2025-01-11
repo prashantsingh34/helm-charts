@@ -82,7 +82,9 @@ spec:
             - name: cloudsql-instance-credentials
               mountPath: /secrets/cloudsql
           securityContext:
-            runAsUser: 0 
+            runAsUser: 0    # Run the container as the root user (UID 0)
+            runAsGroup: 0   # Ensure the group is also root
+            fsGroup: 0
       volumes:
       - name: cloudsql-instance-credentials
         secret:
