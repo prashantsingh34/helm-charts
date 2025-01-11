@@ -72,7 +72,7 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: cloudsql-proxy
-          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.8.0
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy
           args: 
            - "--structured-logs"
            - "--port=3306"
